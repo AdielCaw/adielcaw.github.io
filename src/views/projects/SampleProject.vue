@@ -1,7 +1,6 @@
 <template>
     <div id="sample-project-container">
         <section>
-            <!-- <base-button link to="/projects"><span id="icon-style"><LeftOutlined/></span>Go back to Projects</base-button> -->
             <sample-project-header></sample-project-header>
         </section>
         <section id="product-container">
@@ -13,12 +12,28 @@
 
 <script>
 import SampleProjectHeader from '../../components/layout/SampleProjectHeader.vue';
+import { onMounted, computed, watch } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router'
 
 export default {
     components: {
         SampleProjectHeader
     },
-    
+    setup() {
+        const store = useStore();
+        const router = useRouter();
+
+        const didAutoLogout = computed(() => store.getters.didAutoLogout);
+
+        onMounted(() => store.dispatch('auth/tryLogin'));
+
+        watch(didAutoLogout, (curValue, oldValue) => {
+            if (curValue && curValue !== oldValue) {
+                router.replace('/projects/SampleProject');
+            }
+        })
+    },
 }
 </script>
 

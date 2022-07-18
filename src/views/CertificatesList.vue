@@ -12,6 +12,21 @@
         </div>
     </div>
 </template>
+<script>
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+export default {
+    setup() {
+        const store = useStore();
+
+        const selectedNav = (key) => {
+            store.dispatch('nav/setActiveNav', {key: key});
+        }
+        onMounted(() => selectedNav(['5']));
+    }
+}
+</script>
 
 <style scoped>
 img {

@@ -54,7 +54,6 @@
           </div>
         </a-layout-content>
         <a-layout-footer id="a-footer-style">
-          Ant Design ©2018 Created by Ant UED
         </a-layout-footer>
       </a-layout>
     </a-layout>
@@ -64,7 +63,9 @@
 
 <script>
 import { UserOutlined, HomeOutlined, UploadOutlined, BarChartOutlined, CloudOutlined, AppstoreOutlined } from '@ant-design/icons-vue';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
+
 export default {
   components: {
     UserOutlined,
@@ -76,12 +77,16 @@ export default {
   },
 
   setup() {
+    const store = useStore();
+
     let collapsed = ref(true);
     const setCollapsed = (value) => collapsed.value = value;
 
+    const activeNav = computed(() => store.getters['nav/activeNav']);
+
     return {
       collapsed,
-      selectedKeys: ref(['1']),
+      selectedKeys: ref(activeNav),
       setCollapsed
     };
   },

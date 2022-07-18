@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>
-      <router-link to="/projects/SampleProject">VueShop</router-link>
+      <router-link to="/projects/SampleProject">Buy & Shop</router-link>
     </h1>
     <nav>
       <ul>
@@ -10,7 +10,7 @@
         </li>
         <li>
           <router-link :to="{ name: 'cart' }">Cart</router-link>
-          <base-badge mode="elegant"></base-badge>
+          <base-badge mode="elegant">{{ qty }}</base-badge>
         </li>
         <li>
           <router-link :to="{ name: 'admin' }">Admin</router-link>
@@ -21,11 +21,12 @@
       <base-button class="outline" link :to="{ name: 'auth' }" v-if="!isLoggedIn">Login</base-button>
       <div v-if="isLoggedIn">
         <span style="margin-right: 5px;">User</span>
-        <a-avatar>
+        <a-avatar style="margin-right: 10px;">
           <template #icon>
             <UserOutlined />
           </template>
         </a-avatar>
+        <base-button class="flat" @click="logout">Logout</base-button>
       </div>
     </div>
   </header>
@@ -39,10 +40,14 @@ export default {
   components: { UserOutlined },
   setup() {
     const store = useStore();
-    const isLoggedIn = computed(() => store.getters.isAuthenticated)
+    const isLoggedIn = computed(() => store.getters.isAuthenticated);
+    const qty = computed(() => store.getters['cart/quantity']);
+    const logout = () => store.dispatch('logout');
     
     return {
-      isLoggedIn
+      isLoggedIn,
+      qty,
+      logout
     }
   }
 }
