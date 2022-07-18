@@ -2,11 +2,11 @@
   <a-card id="a-card-style" hoverable>
     <template #cover>
       <img id="img-style" alt="example" 
-      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png">
+      src="https://media-exp1.licdn.com/dms/image/C5103AQHSlhB4venPcQ/profile-displayphoto-shrink_800_800/0/1578227697148?e=1663804800&v=beta&t=q2fDIXGT7QcnHitOt7Zn9Tmc1Lssg_uSH-Fww1N325Y">
     </template>
     <h1 id="name-style">Adiel Caw</h1>
     <div id="divider-style"></div>
-    <p>This is the description</p>
+    <p>Software Developer</p>
   </a-card>
 </template>
 
