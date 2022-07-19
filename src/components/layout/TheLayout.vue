@@ -5,7 +5,7 @@
         @mouseleave="setCollapsed(true)"
         :style="{ height: '100vh', position: 'fixed', left: 0, top: 0, bottom: 0, borderRadius: '0.2857rem', zIndex: '99' }">
         <div class="logo">
-          <p>LOGO</p>
+
         </div>
         <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
           <a-menu-item key="1">

@@ -9,8 +9,8 @@
         </div>
         <form @submit.prevent="submitForm">
             <div class="form-control">
-                <label for="title">Product Name</label>
-                <input type="text" id="title" v-model.trim="product.title" />
+                <label for="producttName">Product Name</label>
+                <input type="text" id="producttName" v-model.trim="product.title" />
             </div>
             <div class="form-control">
                 <label for="price">Price</label>

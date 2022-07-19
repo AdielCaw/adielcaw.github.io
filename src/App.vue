@@ -3,7 +3,9 @@
     <template #header>
       <the-header></the-header>
     </template>
-    <router-view></router-view>
+    <transition name="content">
+      <router-view></router-view>
+    </transition>
   </the-layout>
 </template>
 
@@ -46,4 +48,43 @@ body {
     margin-bottom: 30px
 }
 
+/* .content-enter-from,
+.content-leave-to {
+  opacity: 0;
+}
+
+.content-enter-active {
+  transition: opacity 0.3s ease-out;
+}
+
+.content-leave-active {
+  transition: opacity 0.3s ease-in;
+}
+
+.content-enter-to,
+.content-leave-from {
+  opacity: 1;
+} */
+
+.content-enter-active {
+  animation: opacity 0.5s ease-out;
+}
+
+/* .content-leave-active {
+  animation: slide-scale 0.4s ease-in;
+} */
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  /* 70% {
+    transform: translateY(-245px);
+  } */
+
+  100% {
+    opacity: 1;
+  }
+}
 </style> 
